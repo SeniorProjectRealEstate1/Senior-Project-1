@@ -1,7 +1,7 @@
 module.exports = {
     host: 'localhost',
     user: 'root',
-    password: 'Me.inSql@Rbk',
+    password: 'asd12345hope@@',
     database: 'realestate'
   };
   
