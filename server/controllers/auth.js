@@ -30,9 +30,9 @@ module.exports.getUserByname = async (req, res) => {
 // function to create user in our database will be used in the sign up
 module.exports.registerUser = async (req, res) => {
     await user.getUserByEmail(req.body.email, function (err, results) {
-        if (err) { res.status(500).json(err) }
-        else if (results.length > 0) { res.json("email used") }
-        else if (!validatePassword(req.body.password)) { res.json("password not valid") }
+        if (err) { return res.status(500).json(err) }
+        else if (results.length > 0) { return res.json("email used") }
+        else if (!validatePassword(req.body.password)) { return res.json("password not valid") }
         const hashedPassword = bcrypt.hashSync(req.body.password, 10)//function to hash password
         console.log('hashed password', hashedPassword)
         const newUser = {
@@ -42,7 +42,7 @@ module.exports.registerUser = async (req, res) => {
             token: req.body.token
         }// create new user object to use this insted of req.body in createUser function for security reason to never store the actual password in db but the hashedPassword insted 
         user.createUser(newUser, function (err, results) {
-            if (err) { res.json(err) }
+            if (err) { return err }
             else { res.json(results) }
         })
 
