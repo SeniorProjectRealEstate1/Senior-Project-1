@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import './SignUP.css'
 
 const SignUP = (props) => {
@@ -13,26 +13,28 @@ const SignUP = (props) => {
   {errorMessage && <div className="error-message">{errorMessage}</div>}
   
   <label className="form-group">
-    Email:
+    Email
     <input type="email" className="input" onChange={(e) => setEmail(e.target.value)} />
   </label>
   <br />
   <label className="form-group">
-    Password:
+    Password
     <input type="password" className="input" onChange={(e) => setPassword(e.target.value)} />
   </label>
   <br />
   <label className="form-group">
-    Verify Password:
+    Verify Password
     <input type="password" className="input" onChange={(e) => setVerifyPassword(e.target.value)} />
   </label>
   <br />
   <label className="form-group">
-    Username:
+    Username
     <input type="text" className="input" onChange={(e) => setUsername(e.target.value)} />
   </label>
   <br />
   <button className="button" onClick={() => props.createUser(email, password, username, setErrorMessage, verifyPassword)} type="submit">Sign Up</button>
+  <p class="message">You have an Account?</p>
+  <a class="login-link" >Login</a>
 </div>
   )
 }

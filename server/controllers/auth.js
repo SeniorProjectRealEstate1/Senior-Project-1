@@ -75,10 +75,10 @@ module.exports.loginIn = async (req, res) => {
     }
     console.log('Outside getUserByEmail:', userResults);
     const isPasswordValid=bcrypt.compareSync(req.body.password,userResults[0].password)
-    if(!isPasswordValid){res.status(500).json('Invalid Password')}
+    if(!isPasswordValid){res.json('Invalid Password')}
     else {
         const token =jwt.sign({email:userResults[0].email,username:userResults[0].username},secretKey,{ expiresIn: '1h' })
-        res.json(token)
+        res.json({token:token})
     }
 }
 
